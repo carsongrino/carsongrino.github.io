@@ -14,7 +14,7 @@
         <h1 class=element>carson grino</h1>
         <script type="text/processing">
     
-                PImage bg,corgi, freeCloud, freeCloudTwo, freeCloudBig, topPipe, bottomPipe, start;
+        PImage bg,corgi, freeCloud, freeCloudTwo, freeCloudBig, topPipe, bottomPipe, start;
         float bgx, bgy, freeCloudx, freeCloudy, freeCloudBigx, freeCloudBigy,freeCloudTwox, freeCloudTwoy, corgix, corgiy, g, Vcorgiy, speed, speedimg;
         int[] pipeX, pipeY; //DELCARING TWO ARRAYS 
         int gameState, score;
@@ -22,14 +22,14 @@
         void setup()
         {
           size(1100,800);
-          start = loadImage("./img/startscreen.png");
-          bg = loadImage("./img/cloudsbg.png");
-          freeCloud = loadImage("./img/cloudone.png");
-          freeCloudTwo = loadImage("./img/cloudtwo.png");
-          freeCloudBig= loadImage("./img/cloudsbig.png");
-          bottomPipe= loadImage("./img/bottomPipe.png");
-          topPipe= loadImage("./img/topPipe.png");
-          corgi = loadImage("./img/corgiCharacter.png");
+          start = loadImage("img/startImage.png");
+          bg = loadImage("img/cloudsbg.png");
+          freeCloud = loadImage("img/cloudone.png");
+          freeCloudTwo = loadImage("img/cloudtwo.png");
+          freeCloudBig= loadImage("img/cloudsbig.png");
+          bottomPipe= loadImage("img/bottomPipe.png");
+          topPipe= loadImage("img/topPipe.png");
+          corgi = loadImage("img/corgiCharacter.png");
           corgix = 100;
           corgiy = 50;
           g = 1; //Gravity, rate of downward acceleration
@@ -57,13 +57,13 @@
           {
             startScreen();
           }
-          else if (gameState==0)
+          else if (gameState == 0)
           { 
             setBg();
             freeClouds();
             setPipes();
-            corgi();
-            score();
+            theCorgi();
+            gameScore();
             
           } 
           else
@@ -87,13 +87,16 @@
             gameState= 0;
           }
         }
+
         
-        void score()
+        void gameScore()
         {
           textSize(32); 
           text("SCORE: " + score, width - 170, 40);
         }
-        void corgi()
+        
+        void theCorgi()
+        
         {
           image(corgi, corgix, corgiy);
           corgiy = corgiy + Vcorgiy;
@@ -103,6 +106,7 @@
             text("Get back on track! ", 40, 34);
           } 
         }
+        
         
         void mousePressed()
         {  
@@ -146,12 +150,12 @@
             bgx = 0;
           }
         }
-        //THE CLOUDS MOVING IN THE BACKGROUND
+        // //THE CLOUDS MOVING IN THE BACKGROUND
         void freeClouds()
         {
           image(freeCloud,freeCloudx,freeCloudy);
            
-               freeCloudx=  freeCloudx-speed-random(4);
+              freeCloudx=  freeCloudx-speed-random(4);
           if (freeCloudx < -freeCloud.width)
           {
             freeCloudx = bg.width + freeCloud.width;
