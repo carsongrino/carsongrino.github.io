@@ -18,7 +18,6 @@
       int[] pipeX, pipeY; //DELCARING TWO ARRAYS 
       int gameState, score;
       
-      @pjs
       
       //ONE RUN
       void setup()
@@ -64,8 +63,8 @@
           setBg();
           freeClouds();
           setPipes();
-          corgi();
-          score();
+          theCorgi();
+          theScore();
 
         } 
         else
@@ -92,12 +91,12 @@
         }
       }
 
-      void score()
+      void theScore()
       {
         textSize(32); 
         text("SCORE: " + score, width - 170, 40);
       }
-      void corgi()
+      void theCorgi()
       {
         image(corgi, corgix, corgiy);
         corgiy = corgiy + Vcorgiy;
